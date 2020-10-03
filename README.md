@@ -239,7 +239,8 @@
 	```
 しばらく「待機中」が続く、数分以上待つと、起動します（数分以上）。
 
-- (参考) Nextcloud の初期化方法
+- (参考) Nextcloud の初期化方法 注意：すべての設定などが消えます。
+	実験で準備したNextcloudを作り直したいときは、以下のコマンドで、Nextcloudの環境を消去することが出来ます。
 	```
 	cd /var/www/html
 	sudo rm -Rf nextcloud
@@ -256,7 +257,9 @@
 	sudo service apache2 restart
 	```
 
-## セキュリティに関して  
+## 注意点
+
+### サーバとして使用する際の注意点
 
 ラズベリー・パイは、プログラミング学習用として設計されました。
 ホーム・サーバとして常時通電した動作は、想定されていません。
@@ -273,8 +276,14 @@
 
 とくに、上記1～3については、自分だけでなく他人や社会を巻き込む恐れがあるので、慎重に取り扱ってください。
 
+### インターネット・セキュリティ対策
+
+- ファイヤーウォール機能の設定と有効化
+
 - データベースのroot用のパスワードを設定するには以下のコマンドを入力します。
+	```
 	MariaDB [(none)]> update mysql.user set password=password('password1') where user = 'root';
 	MariaDB [(none)]> flush privileges;
+	```
 
 by <https://bokunimo.net>
