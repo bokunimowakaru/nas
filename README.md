@@ -11,25 +11,27 @@
 
 1. ドライブとパーティションを表示する  
 
-	pi@raspberrypi:~ $ ls /dev/sd*⏎  
+	pi@raspberrypi:~ $ `ls /dev/sd*` ⏎  
 	/dev/sda  /dev/sda1  
 
 2. パーティションの情報を確認する
 
-	pi@raspberrypi:~ $ sudo fdisk -l /dev/sda⏎  
+	pi@raspberrypi:~ $ `sudo fdisk -l /dev/sda` ⏎  
 	Device     Boot Start       End   Sectors   Size Id Type  
 	/dev/sda1        2048 250069678 250067631 119.2G 83 Linux  
 
 3. ディレクトリの作成とマウントを実行
 
-	pi@raspberrypi:~ $ sudo mkdir -pm775 /mnt/ssd1⏎  
+	pi@raspberrypi:~ $ `sudo mkdir -pm775 /mnt/ssd1` ⏎  
 	pi@raspberrypi:~ $ sudo mount /dev/sda1 /mnt/ssd1⏎  
 
 4. マウントできたかどうかを確認する
+
 	pi@raspberrypi:~ $ df⏎  
 	/dev/sda1        123071848   63156 116757004    1% /mnt/ssd1  
 
 5. ファイル共有サーバSambaをインストールする
+
 	pi@raspberrypi:~ $ sudo apt-get update⏎  
 	pi@raspberrypi:~ $ sudo apt-get install samba⏎  
 
@@ -46,6 +48,7 @@
 ### 外付けSDDの自動マウント先の設定
 
 1. パーティションのリストを確認
+
 	pi@raspberrypi:~ $ mount|grep ^/dev/
 	/dev/mmcblk0p7　on　/　type　ext4 (rw,noatime) 
 	/dev/mmcblk0p6　on　/boot　type　vfat(rw,relatime,～) 
@@ -188,6 +191,7 @@
 	sudo chown www-data:www-data apps
 
 2. PHPライブラリの追加
+	```
 	sudo apt install php-mysql
 	sudo apt install php-pgsql
 	sudo apt install php-zip
@@ -197,6 +201,7 @@
 	sudo apt install php-gd
 	sudo apt install php-curl
 	sudo service apache2 restart
+	```
 
 3. データベースへのアカウント追加
 
