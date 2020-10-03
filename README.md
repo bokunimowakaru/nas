@@ -39,7 +39,7 @@
 
 	pi@raspberrypi:~ $ `sudo mousepad /etc/samba/smb.conf` ⏎  
 
-	```/etc/samba/smb.conf
+	```smb.conf
 	[nas]
 	comment = NAS for DMS
 	path = /mnt/ssd1
@@ -58,9 +58,9 @@
 
 2. 自動マウントしたいパーティション情報
 
-	マウント先	/mnt/ssd1
-	フォーマット形式	ext2 (購入したSSDによって違う)
-	オプション	rw,relatime (購入したSSDによって違う)
+	マウント先	/mnt/ssd1  
+	フォーマット形式	ext2 (購入したSSDによって違う)  
+	オプション	rw,relatime (購入したSSDによって違う)  
 
 3. パーティション/dev/sda1のUUIDを調べる
 
@@ -69,7 +69,7 @@
 
 4. 設定ファイル/etc/fstabの最下行に、上記を追記する
 
-	UUID="～"　/mnt/ssd1　ext2　rw,relatime　0　2
+	UUID="～"　/mnt/ssd1　ext2　rw,relatime　0　2  
 
 5. ラズベリー・パイを再起動する
 
@@ -91,10 +91,12 @@
 3. 設定ファイルにコンテンツのパスを記入する
 
 	pi@raspberrypi:~ $ `sudo mousepad /etc/minidlna.conf` ⏎
-	
+
+	'''minidlna.conf
 	media_dir=P,/mnt/ssd1/minidlna/pictures
 	media_dir=A,/mnt/ssd1/minidlna/music
 	media_dir=V,/mnt/ssd1/minidlna/videos
+	'''
 
 4. メディア・サーバReadyMediaを再起動する
 
@@ -143,18 +145,18 @@
 
 ### 共有フォルダへの書き込みを許可する（上級者向け）
 
-1. アカウントdmsuserを作成する
+1. アカウントdmsuserを作成する  
 
-	pi@raspberrypi:~ $ `sudo useradd dmsuser` ⏎
-	pi@raspberrypi:~ $ `sudo pdbedit -a dmsuser` ⏎
-	new password: ********** ⏎
-	retype new password: ********** ⏎
+	pi@raspberrypi:~ $ `sudo useradd dmsuser` ⏎  
+	pi@raspberrypi:~ $ `sudo pdbedit -a dmsuser` ⏎  
+	new password: ********** ⏎  
+	retype new password: ********** ⏎  
 
-2. 設定ファイルに[minidlna]を追加する
+2. 設定ファイルに[minidlna]を追加する  
 
 	pi@raspberrypi:~ $ `sudo mousepad /etc/samba/smb.conf` ⏎
 	
-	```/etc/samba/smb.conf
+	```smb.conf
 	[minidlna]
 	path = /mnt/ssd1/minidlna
 	browseable = yes
@@ -164,19 +166,17 @@
 
 ## M5Cameraの準備
 
-### Arduino IDEのセットアップ
-
-	https://www.arduino.cc/en/Main/Software
+### Arduino IDEのセットアップ  
+	https://www.arduino.cc/en/Main/Software  
 
 - 本誌の実験用サンプル・プログラム：  
+	https://github.com/bokunimowakaru/m5camera/archive/master.zip  
 
-	https://github.com/bokunimowakaru/m5camera/archive/master.zip
+- ラズベリー・パイ用カメラ・サーバのダウンロードと実行  
 
-- ラズベリー・パイ用カメラ・サーバのダウンロードと実行
-
-	pi@raspberrypi:~ $ `git clone https://github.com/bokunimowakaru/m5camera` ⏎
-	pi@raspberrypi:~ $ `cd m5camera/tools` ⏎
-	pi@raspberrypi:~ $ `./get_photo_ssd.sh` ⏎
+	pi@raspberrypi:~ $ `git clone https://github.com/bokunimowakaru/m5camera` ⏎  
+	pi@raspberrypi:~ $ `cd m5camera/tools` ⏎  
+	pi@raspberrypi:~ $ `./get_photo_ssd.sh` ⏎  
 
 ## Nextcloud の準備
 
