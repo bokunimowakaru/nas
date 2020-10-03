@@ -190,8 +190,8 @@
 	sudo wget https://download.nextcloud.com/server/releases/nextcloud-19.0.3.zip
 	sudo unzip nextcloud-19.0.3.zip
 	cd nextcloud
-	mkdir data
-	sudo chown www-data:www-data /var/www/html/nextcloud/data
+	sudo mkdir -pm750 data
+	sudo chown www-data:www-data data
 	sudo chown www-data:www-data config
 	sudo chown www-data:www-data apps
 	```
@@ -209,13 +209,53 @@
 	sudo service apache2 restart
 	```
 
-3. データベースへのアカウント追加
+3. データベースへのアカウント追加（passwordは変更する）
 	```
 	sudo mysql
 	MariaDB [(none)]> create database nextcloud_db;
-	MariaDB [(none)]> use nextcloud_db;
-	MariaDB [nextcloud_db]> create user 'nxcuser'@'localhost' identified by 'password';
-	MariaDB [nextcloud_db]> grant all privileges on nextcloud_db.* to 'nxcuser'@'localhost';
+	MariaDB [(none)]> create user 'nxcuser'@'localhost' identified by 'password';
+	MariaDB [(none)]> grant all privileges on nextcloud_db.* to 'nxcuser'@'localhost';
+	MariaDB [(none)]> quit;
 	```
+
+4. SSD内にデータ用ディレクトリを作成
+	```
+	sudo mkdir -pm777 /mnt/ssd1/nextcloud
+	sudo chown www-data:www-data /mnt/ssd1/nextcloud
+	```
+
+5. ブラウザでアクセスし、設定を行う。管理者アカウントはpiやnxcuserを避ける  
+	http://127.0.0.1/nextcloud  
+	```
+	ユーザ名：(他と違うユーザ名)
+	パスワード：(他と違うパスワード)
+	
+	データフォルダー：/mnt/ssd1/nextcloud
+	
+	データベースのユーザ名：nxcuser
+	データベースのパスワード：password
+	データベース名：nextcloud_db
+	```
+しばらく「待機中」が続く、数分以上待つと、起動します（数分以上）。
+
+- (参考) Nextcloud の初期化方法
+	```
+	cd /var/www/html
+	sudo rm -Rf nextcloud
+	sudo unzip nextcloud-19.0.3.zip
+	cd nextcloud
+	sudo mkdir -pm750 data
+	sudo chown www-data:www-data data
+	sudo chown www-data:www-data config
+	sudo chown www-data:www-data apps
+	sudo mysql
+	MariaDB [(none)]> drop database nextcloud_db;
+	MariaDB [(none)]> create database nextcloud_db;
+	MariaDB [(none)]> quit;
+	sudo service apache2 restart
+	```
+
+## セキュリティに関して  
+
 
 by <https://bokunimo.net>
