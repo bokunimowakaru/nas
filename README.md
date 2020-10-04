@@ -241,9 +241,11 @@
 	```
 しばらく「待機中」が続く、数分以上待つと、起動します（数分以上）。
 
-- (参考) Nextcloud の初期化方法 注意：すべての設定などが消えます。
+- (参考) Nextcloud の初期化方法  
+	★注意：すべての設定などが消えます。  
 	実験で準備したNextcloudを作り直したいときは、以下のコマンドで、Nextcloudの環境を消去することが出来ます。
 	```
+	# Nextcloud の履歴や設定を初期化します(消えます)
 	cd /var/www/html
 	sudo rm -Rf nextcloud
 	sudo unzip nextcloud-19.0.3.zip
