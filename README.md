@@ -191,12 +191,12 @@
 	sudo unzip nextcloud-19.0.3.zip
 	cd nextcloud
 	sudo mkdir -pm750 data
-	sudo chown www-data:www-data data
-	sudo chown www-data:www-data config
-	sudo chown www-data:www-data apps
+	sudo chown -R www-data:www-data data
+	sudo chown -R www-data:www-data config
+	sudo chown -R www-data:www-data apps
 	```
 
-2. PHPライブラリの追加
+2. PHPライブラリの追加（起動に必要）
 	```
 	sudo apt install php-mysql
 	sudo apt install php-pgsql
@@ -208,6 +208,8 @@
 	sudo apt install php-curl
 	sudo service apache2 restart
 	```
+	上記はNextcloudの起動に必要な最小限度の構成です。他にも要件があるので、本格的に使用する際は下記の「Prerequisites for manual installation」をご覧ください。  
+	https://docs.nextcloud.com/server/19/admin_manual/installation/source_installation.html
 
 3. データベースへのアカウント追加（passwordは変更する）
 	データベースと作成し、Nextcloudからのアクセス用のパスワードを設定します。
@@ -247,9 +249,9 @@
 	sudo unzip nextcloud-19.0.3.zip
 	cd nextcloud
 	sudo mkdir -pm750 data
-	sudo chown www-data:www-data data
-	sudo chown www-data:www-data config
-	sudo chown www-data:www-data apps
+	sudo chown -R www-data:www-data data
+	sudo chown -R www-data:www-data config
+	sudo chown -R www-data:www-data apps
 	sudo mysql
 	MariaDB [(none)]> drop database nextcloud_db;
 	MariaDB [(none)]> create database nextcloud_db;
@@ -263,7 +265,7 @@
 	MariaDB [(none)]> flush privileges;
 	```
 - (参考) セキュリティ自己診断機能
-　ユーザアイコンの［設定］をクリックしてサイド・メニューを開き、項目「管理」の［概要］をクリックすると自己診断が実行されます。
+　ユーザアイコンの［設定］をクリックし、左側のサイド・メニュー（表示されない場合は、ウィンドウ幅を広げるかメニューアイコンをクリック）の項目「管理」の［概要］をクリックすると自己診断が実行されます。
 　サーバをインターネットに公開する場合は、必ず診断結果を確認して下さい。
 　著作権のあるコンテンツをインターネットに公開すると、仮に誤操作や不具合であったとしても、権利者への賠償責任と法律による刑事罰の対象となる場合があります。
 
@@ -277,11 +279,19 @@
 インターネットからの脅威に対する備え、著作権のあるコンテンツの適切な管理、マイクロSDカードの寿命に対する考慮が
 必要です。
 
-1.	火災を起こさないための対策
-2.	インターネット・セキュリティ対策
-3.	著作権に対する管理
-4.	データ破損に対する対策
+1. 火災を起こさないための対策
+2. インターネット・セキュリティ対策
+3. 著作権に対する管理
+4. データ破損に対する対策
 
 とくに、上記1～3については、自分だけでなく他人や社会を巻き込む恐れがあるので、慎重に取り扱ってください。
+
+### セキュリティ対策の一例
+
+1. 機器ごと、用途ごとにアカウントとパスワードを設定（同じパスワードを共用しない）
+2. ファイヤーウォールの設置（ホーム・ゲートウェイ、ラズベリー・パイ本体など）
+3. ファイルの読み書き実行権限の設定
+4. OS、アプリケーション、ライブラリの定期的な更新
+5. 不正侵入や不正操作の監視（ログイン履歴、アクセス履歴の保存と拒絶時のアラート送信など）
 
 by <https://bokunimo.net>
