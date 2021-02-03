@@ -107,15 +107,24 @@
 
 ### パーティションを作成しなおす（上級者向け）  
 
+1. マウントの解除  
+
 	pi@raspberrypi:~ $ `sudo umount /dev/sda1` ⏎ 
+
+2. fdiskの起動  
+
 	pi@raspberrypi:~ $ `sudo fdisk /dev/sda` ⏎
 	Welcome to fdisk (util-linux 2.33.1).
 	～表示省略～
-	
+
+3. fdiskでパーティション削除  
+
 	Command (m for help): `delete -a` ⏎
 	Selected partition 1
 	Partition 1 has been deleted.
-	
+
+3. fdiskでパーティション作成  
+
 	Command (m for help): `new` ⏎
 	Partition type
 	   p   primary (0 primary, 0 extended, 4 free)
@@ -130,21 +139,28 @@
 	Do you want to remove the signature? [Y]es/[N]o: `Y` ⏎
 	
 	The signature will be removed by a write command.
-	
+
+3. fdiskでパーティション変更の実行  
+
 	Command (m for help): `write` ⏎
 	The partition table has been altered.
 	Calling ioctl() to re-read partition table.
 	Syncing disks.
-	
+
+4. mkfsでファイル・システムの作成  
+
 	pi@raspberrypi:~ $ `sudo mkfs /dev/sda1` ⏎
 	mke2fs 1.44.5 (15-Dec-2018)
 	～表示省略～
 	Allocating group tables: done
 	Writing inode tables: done
 	Writing superblocks and filesystem accounting information: done
-	
+
+5. 作成したボリュームの確認  
+
 	pi@ raspberrypi:~ $ `ls /dev/sd*` ⏎
 	/dev/sda  /dev/sda1
+
 
 ### 共有フォルダへの書き込みを許可する（上級者向け）
 
