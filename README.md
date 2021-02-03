@@ -1,4 +1,7 @@
-# [ラズベリー・パイで作るホーム・メディア・サーバ](https://bokunimowakaru.github.io/nas/)
+# [ラズベリー・パイで作るホーム・メディア・サーバ](https://git.bokunimo.com/nas/)
+
+本ファイルは、Webページでも閲覧できます：  
+[https://git.bokunimo.com/nas/](https://git.bokunimo.com/nas/)
 
 ## ラズベリー・パイの準備
 
@@ -98,11 +101,11 @@
 	media_dir=V,/mnt/ssd1/minidlna/videos
 	'''
 
-4. メディア・サーバReadyMediaを再起動する
+4. メディア・サーバReadyMediaを再起動する  
 
 	pi@raspberrypi:~ $ `sudo service minidlna restart` ⏎
 
-### パーティションを作成しなおす（上級者向け）
+### パーティションを作成しなおす（上級者向け）  
 
 	pi@raspberrypi:~ $ `sudo umount /dev/sda1` ⏎ 
 	pi@raspberrypi:~ $ `sudo fdisk /dev/sda` ⏎
@@ -296,3 +299,5 @@
 5. 不正侵入や不正操作の監視（ログイン履歴、アクセス履歴の保存と拒絶時のアラート送信など）
 
 by 国野 亘 <https://bokunimo.net>
+
+[https://git.bokunimo.com/nas/](https://git.bokunimo.com/nas/)
