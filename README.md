@@ -1,7 +1,6 @@
 # [ラズベリー・パイで作るホーム・メディア・サーバ](https://git.bokunimo.com/nas/)
 
-本ファイルは、Webページでも閲覧できます：  
-[https://git.bokunimo.com/nas/](https://git.bokunimo.com/nas/)
+Webページ：[https://git.bokunimo.com/nas/](https://git.bokunimo.com/nas/)
 
 ## ラズベリー・パイの準備
 
@@ -316,4 +315,4 @@
 
 by 国野 亘 <https://bokunimo.net>
 
-[https://git.bokunimo.com/nas/](https://git.bokunimo.com/nas/)
+Webページ：[https://git.bokunimo.com/nas/](https://git.bokunimo.com/nas/)
